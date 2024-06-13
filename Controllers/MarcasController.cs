@@ -15,14 +15,14 @@ namespace ConexionEF.Controllers
 
         public IActionResult MarcaAdd()
         {
-            MarcaProducto entity = new MarcaProducto();
-            entity.Id = new Guid();
-            entity.Nombre = "Coca-Cola";
-            entity.Descripcion = "Marca de grupo FAMSA";
+            // MarcaProducto entity = new MarcaProducto();
+            // entity.Id = new Guid();
+            // entity.Nombre = "Coca-Cola";
+            // entity.Descripcion = "Marca de grupo FAMSA";
             
-            //Esto es para guardar en la base de datos.
-            _context.MarcasProductos.Add(entity);
-            _context.SaveChanges();
+            // //Esto es para guardar en la base de datos.
+            // _context.MarcasProductos.Add(entity);
+            // _context.SaveChanges();
 
             return View();
         }
