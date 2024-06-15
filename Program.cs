@@ -9,6 +9,14 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(opc => opc.UseSqlServer("name=MyConnection"));
 
 //Esto es un cambio que hice yo
+/*
+*
+*
+*
+* SALUDOS A LA CLASE !! DE BDI
+*
+*
+*/
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
