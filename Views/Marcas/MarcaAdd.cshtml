@@ -3,11 +3,11 @@
 
 <h1>Alta de Marca de Producto</h1>
 
-<form class="form" asp-controler="Marca" asp-action="MarcaAdd">
+<form class="form" asp-controller="Marcas" asp-action="MarcaAdd">
 
     <div class="mb-3">
         <label asp-for="Nombre" class="form-label">Marca</label>
-        <input type="text" class="form-control" asp-for="Nombre"  placeholder="Escribe el nombre">
+        <input type="text" autocomplete="off" class="form-control" asp-for="Nombre"  placeholder="Escribe el nombre">
     </div>
 
     <div class="mb-3">
@@ -15,5 +15,5 @@
         <textarea class="form-control" asp-for="Descripcion"  rows="3"></textarea>
     </div>
 
-    <button class="btn btn-primary" asp-controller="" asp-action="">Guardar</button>
+    <button class="btn btn-primary">Guardar</button>
 </form>

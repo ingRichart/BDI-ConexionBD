@@ -40,7 +40,7 @@ namespace ConexionEF.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MarcasProductos");
+                    b.ToTable("MarcasProductos", (string)null);
                 });
 
             modelBuilder.Entity("ConexionEF.Entities.TipoProducto", b =>
@@ -59,7 +59,7 @@ namespace ConexionEF.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TiposProductos");
+                    b.ToTable("TiposProductos", (string)null);
                 });
 #pragma warning restore 612, 618
         }
