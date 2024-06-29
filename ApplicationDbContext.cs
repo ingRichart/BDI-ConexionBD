@@ -14,5 +14,7 @@ namespace ConexionEF
 
         public DbSet<MarcaProducto> MarcasProductos { get; set; }
 
+        public DbSet<Producto> Productos { get; set; }
+
     }
 }
