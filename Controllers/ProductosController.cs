@@ -15,7 +15,20 @@ namespace ConexionEF.Controllers
 
         public IActionResult ProductoAdd()
         {
-            return View();
+            var modelo  = new ProductoModel();
+
+            var listaMarcas = 
+            _context.MarcasProductos
+                .Select(m => new MarcaModel()
+                    {
+                        Id = m.Id,
+                        Nombre = m.Nombre
+                    })
+                .ToList();
+
+            modelo.ListadoMarcas = listaMarcas;
+
+            return View(modelo);
         }
 
         [HttpPost]

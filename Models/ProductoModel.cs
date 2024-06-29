@@ -11,5 +11,11 @@ namespace ConexionEF.Models
         public string Nombre { get; set; }
 
         public string Descripcion { get; set; }
+
+        public Guid MarcaModelId { get; set; }
+
+        public MarcaModel MarcaModel { get; set; }
+
+        public List<MarcaModel> ListadoMarcas { get; set; }
     }
 }
