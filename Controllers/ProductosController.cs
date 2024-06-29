@@ -1,6 +1,7 @@
 using ConexionEF.Entities;
 using ConexionEF.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ConexionEF.Controllers
 {
@@ -19,10 +20,10 @@ namespace ConexionEF.Controllers
 
             var listaMarcas = 
             _context.MarcasProductos
-                .Select(m => new MarcaModel()
+                .Select(m => new SelectListItem()
                     {
-                        Id = m.Id,
-                        Nombre = m.Nombre
+                        Value = m.Id.ToString(),
+                        Text = m.Nombre
                     })
                 .ToList();
 

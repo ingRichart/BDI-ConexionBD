@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Mvc.Rendering;
+
 namespace ConexionEF.Models
 {
     public class ProductoModel
@@ -16,6 +18,6 @@ namespace ConexionEF.Models
 
         public MarcaModel MarcaModel { get; set; }
 
-        public List<MarcaModel> ListadoMarcas { get; set; }
+        public List<SelectListItem> ListadoMarcas { get; set; }
     }
 }
