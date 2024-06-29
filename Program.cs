@@ -19,7 +19,7 @@ builder.Services.AddControllersWithViews(
     opc => opc.Filters.Add(new AuthorizeFilter(polityUserAuthentifition))
 );
 
-//Esto es una prueba para revision del código.
+//Esto es para la conexion a la BASE DE DATOS.
 builder.Services.AddDbContext<ApplicationDbContext>(opc => opc.UseSqlServer("name=MyConnection"));
 
 
