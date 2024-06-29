@@ -20,7 +20,8 @@ builder.Services.AddControllersWithViews(
 );
 
 //Esto es una prueba para revision del código.
-builder.Services.AddDbContext<ApplicationDbContext>(opc => opc.UseNpgsql("name=MyConnection"));
+builder.Services.AddDbContext<ApplicationDbContext>(opciones
+  => opciones.UseSqlServer("name=MyConnectionTrust"));
 
 
  builder.Services.AddAuthentication();
