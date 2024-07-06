@@ -2,6 +2,7 @@ using ConexionEF.Entities;
 using ConexionEF.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace ConexionEF.Controllers
 {
@@ -68,11 +69,15 @@ namespace ConexionEF.Controllers
         {
             List<ProductoModel> list = 
             _context.Productos
-                .Select(m => new ProductoModel()
+                .Include(t => t.TipoProducto)
+                .Include(m => m.MarcaProducto)
+                .Select(p => new ProductoModel()
                     {
-                        Id = m.Id,
-                        Nombre = m.Nombre,
-                        Descripcion = m.Descripcion
+                        Id = p.Id,
+                        Nombre = p.Nombre,
+                        Descripcion = p.Descripcion,
+                        TipoModelNombre = p.TipoProducto.Nombre,
+                        MarcaModelNombre = p.MarcaProducto.Nombre
                     })
                 .ToList();
 
@@ -81,9 +86,26 @@ namespace ConexionEF.Controllers
 
         public IActionResult ProductoEdit(Guid Id)
         {
-            Producto entity = _context.Productos
-                .FirstOrDefault(m => m.Id == Id);
+             var listaMarcas = 
+            _context.MarcasProductos
+                .Select(m => new SelectListItem()
+                    {
+                        Value = m.Id.ToString(),
+                        Text = m.Nombre
+                    })
+                .ToList();
 
+            var listaTipos =
+                _context.TiposProductos
+                .Select(m => new SelectListItem()
+                    {
+                        Value = m.Id.ToString(),
+                        Text = m.Nombre
+                    })
+                .ToList();
+
+            var entity = _context.Productos
+                .FirstOrDefault(m => m.Id == Id);
             if (entity == null)
             {
                 return NotFound();
@@ -92,6 +114,12 @@ namespace ConexionEF.Controllers
             ProductoModel modelo = new ProductoModel();
             modelo.Nombre = entity.Nombre;
             modelo.Descripcion = entity.Descripcion;
+
+            modelo.ListadoTipos = listaTipos;
+            modelo.ListadoMarcas = listaMarcas;
+
+            modelo.TipoModelId = entity.TipoProductoId;
+            modelo.MarcaModelId = entity.MarcaProductoId;
 
             return View(modelo);
         }
@@ -110,6 +138,8 @@ namespace ConexionEF.Controllers
             
             entity.Nombre = modelo.Nombre;
             entity.Descripcion = modelo.Descripcion;
+            entity.TipoProductoId = modelo.TipoModelId;
+            entity.MarcaProductoId = modelo.MarcaModelId;
 
             _context.Productos.Update(entity);
             _context.SaveChanges();
@@ -119,9 +149,26 @@ namespace ConexionEF.Controllers
 
         public IActionResult ProductoDelete(Guid Id)
         {
-            Producto entity = _context.Productos
-                .FirstOrDefault(m => m.Id == Id);
+             var listaMarcas = 
+            _context.MarcasProductos
+                .Select(m => new SelectListItem()
+                    {
+                        Value = m.Id.ToString(),
+                        Text = m.Nombre
+                    })
+                .ToList();
 
+            var listaTipos =
+                _context.TiposProductos
+                .Select(m => new SelectListItem()
+                    {
+                        Value = m.Id.ToString(),
+                        Text = m.Nombre
+                    })
+                .ToList();
+
+            var entity = _context.Productos
+                .FirstOrDefault(m => m.Id == Id);
             if (entity == null)
             {
                 return NotFound();
@@ -131,10 +178,15 @@ namespace ConexionEF.Controllers
             modelo.Nombre = entity.Nombre;
             modelo.Descripcion = entity.Descripcion;
 
+            modelo.ListadoTipos = listaTipos;
+            modelo.ListadoMarcas = listaMarcas;
+
+            modelo.TipoModelId = entity.TipoProductoId;
+            modelo.MarcaModelId = entity.MarcaProductoId;
+            
             return View(modelo);
         }
-
-        
+      
         [HttpPost]  
         public IActionResult ProductoDelete(ProductoModel modelo)
         {

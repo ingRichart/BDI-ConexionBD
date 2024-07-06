@@ -25,5 +25,9 @@ namespace ConexionEF.Models
         public TipoModel? TipoModel { get; set; }
 
         public List<SelectListItem>? ListadoTipos { get; set; }
+
+        public string? TipoModelNombre { get; set; }
+
+        public string? MarcaModelNombre { get; set; }
     }
 }

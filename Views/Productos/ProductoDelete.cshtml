@@ -13,6 +13,21 @@
         <textarea class="form-control" asp-for="Descripcion"  rows="3" readonly></textarea>
     </div>
 
+    <div class="mb-3">
+        <select class="form-select" asp-for="TipoModelId" asp-items="@Model.ListadoTipos" disabled>
+            <option>Seleccionar el tipo</option>
+        </select>
+        <span asp-validation-for="TipoModelId" class="text-danger" ></span>
+    </div>
+
+    <div class="mb-3">
+        <select class="form-select" asp-for="MarcaModelId" asp-items="@Model.ListadoMarcas" disabled>
+            <option>Seleccionar la marca</option>
+        </select>
+        <span asp-validation-for="MarcaModelId" class="text-danger" ></span>
+    </div>
+
+
     <button class="btn btn-danger">Borrar</button>
     <a class="btn btn-secondary" asp-controller="Productos" asp-action="ProductoList">Regresar</a>
 </form>
