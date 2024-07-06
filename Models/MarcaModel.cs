@@ -11,5 +11,6 @@ namespace ConexionEF.Models
         public string Nombre { get; set; }
 
         public string Descripcion { get; set; }
+
     }
 }

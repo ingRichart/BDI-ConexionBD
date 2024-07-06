@@ -15,7 +15,13 @@
         <textarea class="form-control" asp-for="Descripcion"  rows="3"></textarea>
     </div>
 
-    
+    <div class="mb-3">
+        <select class="form-select" asp-for="TipoModelId" asp-items="@Model.ListadoTipos">
+            <option>Seleccionar el tipo</option>
+        </select>
+        <span asp-validation-for="TipoModelId" class="text-danger" ></span>
+    </div>
+
     <div class="mb-3">
         <select class="form-select" asp-for="MarcaModelId" asp-items="@Model.ListadoMarcas">
             <option>Seleccionar la marca</option>
@@ -23,6 +29,7 @@
         <span asp-validation-for="MarcaModelId" class="text-danger" ></span>
     </div>
 
-
-    <button class="btn btn-primary">Guardar</button>
+    <div>
+        <button class="btn btn-primary">Guardar</button>
+    </div>
 </form>

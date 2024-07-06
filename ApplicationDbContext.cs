@@ -9,7 +9,6 @@ namespace ConexionEF
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
         }
-
         public DbSet<TipoProducto> TiposProductos { get; set; }
 
         public DbSet<MarcaProducto> MarcasProductos { get; set; }

@@ -29,6 +29,17 @@ namespace ConexionEF.Controllers
 
             modelo.ListadoMarcas = listaMarcas;
 
+            var listaTipos =
+                _context.TiposProductos
+                .Select(m => new SelectListItem()
+                    {
+                        Value = m.Id.ToString(),
+                        Text = m.Nombre
+                    })
+                .ToList();
+
+            modelo.ListadoTipos = listaTipos;
+
             return View(modelo);
         }
 
@@ -44,6 +55,8 @@ namespace ConexionEF.Controllers
             entity.Id = new Guid();
             entity.Nombre = modelo.Nombre;
             entity.Descripcion = modelo.Descripcion;
+            entity.TipoProductoId = modelo.TipoModelId;
+            entity.MarcaProductoId = modelo.MarcaModelId;
 
             _context.Productos.Add(entity);
             _context.SaveChanges();

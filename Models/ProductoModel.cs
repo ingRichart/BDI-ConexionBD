@@ -16,8 +16,14 @@ namespace ConexionEF.Models
 
         public Guid MarcaModelId { get; set; }
 
-        public MarcaModel MarcaModel { get; set; }
+        public MarcaModel? MarcaModel { get; set; }
 
-        public List<SelectListItem> ListadoMarcas { get; set; }
+        public List<SelectListItem>? ListadoMarcas { get; set; }
+
+        public Guid TipoModelId { get; set; }
+
+        public TipoModel? TipoModel { get; set; }
+
+        public List<SelectListItem>? ListadoTipos { get; set; }
     }
 }
